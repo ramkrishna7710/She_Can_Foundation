@@ -13,8 +13,10 @@ const app = express();
 app.use(
   cors({
     origin: [
-      "https://shecanfoundation-4j6oe8c1y-ramkrishna-s-project1.vercel.app/",
+      "https://shecanfoundation-5tzpndgb9-ramkrishna-s-project1.vercel.app",
     ],
+
+    methods: ["GET", "POST", "PUT", "DELETE"],
 
     credentials: true,
   }),
