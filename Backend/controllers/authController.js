@@ -30,13 +30,25 @@ exports.register = async (req, res) => {
       role: "user",
     });
 
-    res.json({
+    res.status(201).json({
       token: generateToken(user._id),
 
-      user,
+      user: {
+        id: user._id,
+
+        name: user.name,
+
+        email: user.email,
+
+        role: user.role,
+      },
     });
   } catch (err) {
-    res.status(500).json(err);
+    console.log(err);
+
+    res.status(500).json({
+      message: err.message,
+    });
   }
 };
 
@@ -52,7 +64,15 @@ exports.login = async (req, res) => {
       res.json({
         token: generateToken(user._id),
 
-        user,
+        user: {
+          id: user._id,
+
+          name: user.name,
+
+          email: user.email,
+
+          role: user.role,
+        },
       });
     } else {
       res.status(401).json({
@@ -60,6 +80,10 @@ exports.login = async (req, res) => {
       });
     }
   } catch (err) {
-    res.status(500).json(err);
+    console.log(err);
+
+    res.status(500).json({
+      message: err.message,
+    });
   }
 };
