@@ -1,10 +1,7 @@
 import axios from "axios";
 
 const API = axios.create({
-
-baseURL:
-"https://she-can-foundation-hj2a.onrender.com/api"
-
+    baseURL: import.meta.env.VITE_API
 });
 
 export default API;
