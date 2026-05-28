@@ -13,7 +13,7 @@ const app = express();
 app.use(
   cors({
     origin: [
-      "https://shecanfoundation-743s4mfh5-ramkrishna-s-project1.vercel.app/",
+      "https://shecanfoundation-4j6oe8c1y-ramkrishna-s-project1.vercel.app/",
     ],
 
     credentials: true,
