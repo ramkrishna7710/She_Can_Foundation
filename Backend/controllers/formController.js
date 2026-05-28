@@ -1,57 +1,27 @@
-const Contact=
-require("../models/Contact");
+const Contact = require("../models/Contact");
 
-exports.submitForm=
-async(req,res)=>{
+exports.submitForm = async (req, res) => {
+  try {
+    const { name, email, message } = req.body;
 
-try{
+    if (!name || !email || !message) {
+      return res.status(400).json({
+        message: "All fields required",
+      });
+    }
 
-const {
-name,
-email,
-message
-}=req.body;
+    await Contact.create({
+      name,
+      email,
+      message,
+    });
 
-if(
-!name ||
-!email ||
-!message
-){
+    res.json({
+      success: true,
 
-return res.status(400)
-.json({
-
-message:
-"All fields required"
-
-})
-
-}
-
-await Contact.create({
-
-name,
-email,
-message
-
-});
-
-res.json({
-
-success:true,
-
-message:
-"Form Submitted Successfully"
-
-})
-
-}
-
-catch(err){
-
-res.status(500)
-.json(err)
-
-}
-
-}
+      message: "Form Submitted Successfully",
+    });
+  } catch (err) {
+    res.status(500).json(err);
+  }
+};

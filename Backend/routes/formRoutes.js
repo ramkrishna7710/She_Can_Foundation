@@ -1,19 +1,7 @@
-const router=
-require("express")
-.Router();
+const router = require("express").Router();
 
-const {
+const { submitForm } = require("../controllers/formController");
 
-submitForm
+router.post("/", submitForm);
 
-}=require(
-"../controllers/formController"
-);
-
-router.post(
-"/",
-submitForm
-);
-
-module.exports=
-router;
+module.exports = router;

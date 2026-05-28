@@ -1,29 +1,15 @@
-const Contact=
-require("../models/Contact");
+const Contact = require("../models/Contact");
 
-exports.getMessages=
-async(req,res)=>{
+exports.getMessages = async (req, res) => {
+  const messages = await Contact.find().sort({ createdAt: -1 });
 
-const messages=
-await Contact.find()
-.sort({createdAt:-1});
-
-res.json(messages);
-
+  res.json(messages);
 };
 
-exports.deleteMessage=
-async(req,res)=>{
+exports.deleteMessage = async (req, res) => {
+  await Contact.findByIdAndDelete(req.params.id);
 
-await Contact.findByIdAndDelete(
-req.params.id
-);
-
-res.json({
-
-message:
-"Deleted"
-
-})
-
+  res.json({
+    message: "Deleted",
+  });
 };

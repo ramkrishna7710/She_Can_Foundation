@@ -21,7 +21,7 @@ function Home() {
 
       <Mission />
 
-      <ContactForm/>
+      <ContactForm />
 
       <Footer />
     </>
