@@ -21,7 +21,7 @@ const app = express();
 app.use(
   cors({
     origin: [
-      "https://she-can-foundation-1-w2mt.onrender.com/",
+      "https://she-can-foundation-1-w2mt.onrender.com",
 
       "http://localhost:5173",
     ],
