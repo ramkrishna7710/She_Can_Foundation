@@ -7,6 +7,10 @@ function Hero() {
       className="
       relative
       min-h-screen
+      pt-28
+      md:pt-32
+      px-6
+      md:px-20
       bg-cover
       bg-center
       flex
