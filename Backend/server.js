@@ -21,7 +21,7 @@ const app = express();
 app.use(
   cors({
     origin: [
-      "https://shecanfoundation-5tzpndgb9-ramkrishna-s-project1.vercel.app",
+      "https://she-can-foundation-1-w2mt.onrender.com/",
 
       "http://localhost:5173",
     ],
@@ -72,10 +72,6 @@ app.use(errorHandler);
 
 const PORT = process.env.PORT || 5000;
 
-app.listen(
-  PORT,
-  "0.0.0.0",
-  () => {
-    console.log(`Running ${PORT}`);
-  },
-);
+app.listen(PORT, () => {
+  console.log(`Running ${PORT}`);
+});
