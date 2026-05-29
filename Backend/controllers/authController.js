@@ -6,9 +6,17 @@ const generateToken = require("../utils/generateToken");
 
 exports.register = async (req, res) => {
   try {
-    const { name, email, password } = req.body;
+    const {
+      name,
 
-    const exist = await User.findOne({ email });
+      email,
+
+      password,
+    } = req.body;
+
+    const exist = await User.findOne({
+      email,
+    });
 
     if (exist) {
       return res.status(400).json({
@@ -29,6 +37,8 @@ exports.register = async (req, res) => {
     });
 
     res.status(201).json({
+      message: "User Created",
+
       token: generateToken(user._id),
 
       user: {
@@ -52,7 +62,11 @@ exports.register = async (req, res) => {
 
 exports.login = async (req, res) => {
   try {
-    const { email, password } = req.body;
+    const {
+      email,
+
+      password,
+    } = req.body;
 
     const user = await User.findOne({
       email,
@@ -72,7 +86,7 @@ exports.login = async (req, res) => {
 
     if (!match) {
       return res.status(401).json({
-        message: "Wrong Password",
+        message: "Invalid Credentials",
       });
     }
 

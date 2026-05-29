@@ -2,9 +2,11 @@ const mongoose = require("mongoose");
 
 const connectDB = async () => {
   try {
-    await mongoose.connect(process.env.MONGO_URI); //use process.env.LOCAL_DB to use local databases
+    await mongoose.connect(process.env.MONGO_URI);
 
     console.log("MongoDB Connected");
+
+    console.log("Database:", mongoose.connection.name);
   } catch (err) {
     console.log(err);
 

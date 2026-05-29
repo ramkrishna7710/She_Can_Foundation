@@ -24,8 +24,14 @@ function Dashboard() {
       );
 
       setMessages(res.data);
-    } catch {
-      toast.error("Cannot Load Messages");
+    } catch (err) {
+      if (err.response?.status === 403) {
+        toast.error("You are not admin");
+      } else if (err.response?.status === 401) {
+        toast.error("Please Login");
+      } else {
+        toast.error("Cannot Load Messages");
+      }
     }
 
     setLoading(false);
@@ -66,7 +72,7 @@ function Dashboard() {
     <div className="min-h-screen bg-gray-100 p-8">
       <h1 className="text-4xl font-bold mb-8">Admin Dashboard</h1>
 
-        {/* upload image */}
+      {/* upload image */}
       {/* <div className="mb-10">
         <Upload />
       </div> */}

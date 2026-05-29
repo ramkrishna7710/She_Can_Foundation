@@ -33,46 +33,107 @@ function Register() {
     setLoading(true);
 
     try {
-      await API.post("/auth/register", form);
+      const res = await API.post(
+        "/auth/register",
+
+        form,
+      );
+
+      localStorage.setItem(
+        "token",
+
+        res.data.token,
+      );
 
       toast.success("Registered Successfully");
 
       navigate("/login");
-    } catch {
-      toast.error("Registration Failed");
+    } catch (err) {
+      toast.error(err.response?.data?.message || "Registration Failed");
     } finally {
       setLoading(false);
     }
   };
 
   return (
-    <div className="flex justify-center items-center h-screen">
-      <form onSubmit={submit} className="shadow p-10 flex flex-col gap-5 w-96">
-        <h1 className="text-3xl">Register</h1>
+    <div
+      className="
+flex
+justify-center
+items-center
+h-screen
+bg-gray-100
+"
+    >
+      <form
+        onSubmit={submit}
+        className="
+bg-white
+shadow
+rounded
+p-10
+w-96
+flex
+flex-col
+gap-5
+"
+      >
+        <h1
+          className="
+text-3xl
+font-bold
+"
+        >
+          Register
+        </h1>
 
         <input
           name="name"
-          placeholder="Name"
+          value={form.name}
           onChange={change}
-          className="border p-3"
+          placeholder="Name"
+          className="
+border
+p-3
+rounded
+"
         />
 
         <input
           name="email"
-          placeholder="Email"
+          value={form.email}
           onChange={change}
-          className="border p-3"
+          placeholder="Email"
+          className="
+border
+p-3
+rounded
+"
         />
 
         <input
           type="password"
           name="password"
-          placeholder="Password"
+          value={form.password}
           onChange={change}
-          className="border p-3"
+          placeholder="Password"
+          className="
+border
+p-3
+rounded
+"
         />
 
-        <button disabled={loading} className="bg-black text-white p-3">
+        <button
+          type="submit"
+          disabled={loading}
+          className="
+bg-black
+text-white
+p-3
+rounded
+"
+        >
           {loading ? "Loading..." : "Register"}
         </button>
       </form>
