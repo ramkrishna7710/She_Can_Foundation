@@ -56,9 +56,15 @@ function Navbar() {
         <Link to="/dashboard">Dashboard</Link>
 
         {token ? (
-          <button onClick={logout}>Logout</button>
+          <>
+            <button onClick={logout}>Logout</button>
+          </>
         ) : (
-          <Link to="/login">Login</Link>
+          <>
+            <Link to="/login">Login</Link>
+
+            <Link to="/register">Register</Link>
+          </>
         )}
       </div>
 
@@ -114,9 +120,15 @@ function Navbar() {
               Logout
             </button>
           ) : (
-            <Link to="/login" onClick={() => setOpen(false)}>
-              Login
-            </Link>
+            <>
+              <Link to="/login" onClick={() => setOpen(false)}>
+                Login
+              </Link>
+
+              <Link to="/register" onClick={() => setOpen(false)}>
+                Register
+              </Link>
+            </>
           )}
         </div>
       )}
